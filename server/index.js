@@ -3,8 +3,9 @@ const http = require('http').createServer(app)
 const io = require('socket.io')(http)
 
 io.on('connection', socket => {
-  socket.on('message', ({ name, message }) => {
-    io.emit('message', { name, message })
+  socket.on('name', ({ name }) => {
+    
+    io.emit('name', { name }) // emits lobby name to all connected sockets.
   })
 })
 
